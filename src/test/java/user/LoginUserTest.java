@@ -13,9 +13,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class LoginUserTest {
-    private static final String email = "test_login_email" + new Random().nextInt(10000) + "@yandex.ru";
+    private static final String email = "rinat" + new Random().nextInt(10000) + "@yandex.ru";
     private static final String password = "test_password";
-    private static final String name = "testname";
+    private static final String name = "rinat";
     String accessToken = null;
 
     @Before
