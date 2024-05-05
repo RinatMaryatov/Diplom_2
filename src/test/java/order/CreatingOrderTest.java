@@ -17,9 +17,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class CreatingOrderTest {
-    private static final String email = "test_login_email_" + new Random().nextInt(10000) + "@yandex.ru";
-    private static final String password = "test_password" + new Random().nextInt(10000);
-    private static final String name = "testname";
+    private static final String EMAIL = "test_login_email_" + new Random().nextInt(10000) + "@yandex.ru";
+    private static final String PASSWORD = "test_password" + new Random().nextInt(10000);
+    private static final String NAME = "testname";
     private String accessToken = null;
 
     @Before
@@ -28,16 +28,16 @@ public class CreatingOrderTest {
         createUser();
     }
     public void createUser() {
-        User user = new User(email, password, name);
+        User user = new User(EMAIL, PASSWORD, NAME);
         Response response = UserMethods.createUser(user);
         this.accessToken = response.path("accessToken");
         response.then().assertThat().statusCode(200)
                 .and()
                 .body("success", equalTo(true))
                 .and()
-                .body("user.email", equalTo(email))
+                .body("user.email", equalTo(EMAIL))
                 .and()
-                .body("user.name", equalTo(name))
+                .body("user.name", equalTo(NAME))
                 .and()
                 .body("accessToken", notNullValue());
     }
