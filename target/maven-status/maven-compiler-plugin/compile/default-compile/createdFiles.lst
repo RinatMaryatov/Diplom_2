@@ -1,0 +1,8 @@
+ingredients\IngredientsMethods.class
+user\UserMethods.class
+helpers\UrlAdresses.class
+order\OrderMethods.class
+order\Order.class
+ingredients\Ingredients.class
+ingredients\IngredientsResponse.class
+user\User.class
