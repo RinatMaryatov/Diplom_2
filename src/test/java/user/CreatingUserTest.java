@@ -1,5 +1,6 @@
 package user;
 
+import helpers.UrlAdresses;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -20,7 +21,7 @@ public class CreatingUserTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = BASE_URL;
+        UrlAdresses.URI();
     }
 
     @Test

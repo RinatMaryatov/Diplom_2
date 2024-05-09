@@ -1,4 +1,7 @@
 package helpers;
+
+import io.restassured.RestAssured;
+
 public class UrlAdresses {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";
     public static final String REGISTER = "/api/auth/register";
@@ -6,4 +9,8 @@ public class UrlAdresses {
     public static final String USER = "/api/auth/user";
     public static final String ORDER = "/api/orders";
     public static final String INGREDIENTS = "/api/ingredients";
+
+    public static void URI(){
+        RestAssured.baseURI = BASE_URL;
+    }
 }

@@ -1,6 +1,7 @@
 package order;
 
 import com.google.gson.Gson;
+import helpers.UrlAdresses;
 import ingredients.Ingredients;
 import ingredients.IngredientsMethods;
 import io.qameta.allure.Description;
@@ -22,6 +23,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static user.UserMethods.createUser;
 
 public class GettingOrdersTest {
     private static final String EMAIL = "test_login_email_" + new Random().nextInt(10000) + "@yandex.ru";
@@ -31,24 +33,11 @@ public class GettingOrdersTest {
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = BASE_URL;
-        createUser();
-        createTestOrder();
-    }
-
-    public void createUser() {
+        UrlAdresses.URI();
         User user = new User(EMAIL, PASSWORD, NAME);
         Response response = UserMethods.createUser(user);
         this.accessToken = response.path("accessToken");
-        response.then().assertThat().statusCode(200)
-                .and()
-                .body("success", equalTo(true))
-                .and()
-                .body("user.email", equalTo(EMAIL))
-                .and()
-                .body("user.name", equalTo(NAME))
-                .and()
-                .body("accessToken", notNullValue());
+        createTestOrder();
     }
 
     public void createTestOrder() {

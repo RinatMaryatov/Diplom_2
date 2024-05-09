@@ -4,8 +4,11 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import static helpers.UrlAdresses.*;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class UserMethods {
+
     @Step("Создание пользователя")
     public static Response createUser(User user) {
         Response response = given()
